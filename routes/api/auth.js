@@ -1,9 +1,8 @@
 const express = require("express")
+const userController = require("../../controllers/userController")
 const router = express.Router()
 
 
-router.get("/", (req,res)=>{
-    console.log("api v1 auth")
-})
+router.post("/", userController )
 
 module.exports = router

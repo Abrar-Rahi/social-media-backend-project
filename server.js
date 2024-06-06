@@ -10,7 +10,7 @@ mongoConfig()
 // express middleware connections
 const app = express()
 app.use(express.json())
-app.use(cors)
+app.use(cors())
 app.use(router)
 
 const port = process.env.PORT || 8000
