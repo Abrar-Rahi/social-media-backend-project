@@ -3,6 +3,8 @@ const emailValidation = require("../helpers/validation")
 const nameValidation = require("../helpers/nameValidation")
 const bcrypt = require('bcrypt');
 const validUserName = require("../helpers/validUserName");
+const jwToken = require("../helpers/tokenForVarified");
+const { sendVarifiedEmail } = require("../helpers/mailer");
 
 
 let userController = async (req,res)=>{
@@ -51,7 +53,24 @@ let userController = async (req,res)=>{
         gender
     })
     data.save()
-    res.send(data)
+    // token and url for varification
+    const tokenEmailVarification = jwToken({id : data._id.toString()} , "30m" )
+    const url = `${process.env.BASE_URL}/varification/${tokenEmailVarification}`
+   // send argument for helpers mailing.js
+    sendVarifiedEmail(data.email, data.fName, url)
+
+    let token = jwToken({id : data._id.toString()} , "7d" )
+    
+    res.send({
+      id : data._id,
+      userName : data.userName,
+      fName : data.fName,
+      lName : data.lName,
+      profilePicture : data.profilePicture,
+      token : token,
+      varified : data.varified,
+      message : "Registration success! please varify your email"
+    })
 
   } 
   catch (error) {
