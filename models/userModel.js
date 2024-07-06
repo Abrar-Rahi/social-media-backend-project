@@ -40,17 +40,17 @@ const UserModel = new Schema(
         type : String,
         trim : true
       },
+      bYear: {
+        type : Number,
+        require : true,
+        trim : true
+      },
       bMonth: {
         type : Number,
         require : true,
         trim : true
       },
       bDay: {
-        type : Number,
-        require : true,
-        trim : true
-      },
-      bYear: {
         type : Number,
         require : true,
         trim : true
