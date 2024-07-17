@@ -1,12 +1,12 @@
 const jwToken = require("../helpers/tokenForVarified")
-const userModel = require("../models/userModel")
+const UserModel = require("../models/userModel")
 const bcrypt = require('bcrypt');
 
 let loginController = async (req, res) => {
     try {
         let { email, password } = req.body
 
-        let existingEmail = await userModel.findOne({ email: email })
+        let existingEmail = await UserModel.findOne({ email: email })
         if (!existingEmail) {
             return res.status(400).json({
                 message: "The Email is not valid in any accounts"

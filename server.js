@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require("express")
 const cors = require("cors")
+const fileUpload = require("express-fileupload")
 const mongoConfig = require("./database/mongoConfig")
 const router = require("./routes")
 
@@ -11,6 +12,9 @@ mongoConfig()
 const app = express()
 app.use(express.json())
 app.use(cors())
+app.use(fileUpload({
+    useTempFiles : true,
+}));
 app.use(router)
 
 const port = process.env.PORT || 8000
