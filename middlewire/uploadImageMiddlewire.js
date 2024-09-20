@@ -21,9 +21,8 @@ exports.uploadImageMiddlewire = async (req, res, next) => {
                     message: "image size is too large"
                 })
             }
-            next()
-
         });
+        next()
     } catch (error) {
         res.status(404).json({
             message: error.message

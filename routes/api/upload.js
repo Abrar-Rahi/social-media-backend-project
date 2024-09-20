@@ -4,7 +4,7 @@ const { uploadImageMiddlewire } = require("../../middlewire/uploadImageMiddlewir
 const { uploadImage } = require("../../controllers/uploadController")
 
 
-router.post("/uploadImage", uploadImageMiddlewire , uploadImage )
+router.post("/uploadImage", uploadImageMiddlewire, uploadImage )
 
 
 module.exports = router

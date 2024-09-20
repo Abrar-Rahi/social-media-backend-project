@@ -22,9 +22,13 @@ let loginController = async (req, res) => {
         res.send({
             id: existingEmail._id,
             userName: existingEmail.userName,
+            email : existingEmail.email,
             fName: existingEmail.fName,
             lName: existingEmail.lName,
             profilePicture: existingEmail.profilePicture,
+            coverPicture: existingEmail.coverPicture,
+            friends: existingEmail.friends,
+            followers: existingEmail.followers,
             token: token,
             varified: existingEmail.varified,
             message: "login Success"
@@ -32,7 +36,7 @@ let loginController = async (req, res) => {
 
     } catch (err) {
         res.status(401).json({
-            message: err.message 
+            message: err.message
         })
     }
 }

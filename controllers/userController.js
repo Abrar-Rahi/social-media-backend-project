@@ -67,6 +67,9 @@ let userController = async (req,res)=>{
       fName : data.fName,
       lName : data.lName,
       profilePicture : data.profilePicture,
+      coverPicture : data.coverPicture,
+      friends : data.friends,
+      followers : data.followers,
       token : token,
       varified : data.varified,
       message : "Registration success! please varify your email"

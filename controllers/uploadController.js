@@ -13,11 +13,12 @@ exports.uploadImage = async (req,res)=>{
     const files = Object.values(req.files).flat()
     const image = []
     for (const file of files) {
-      let url = await uploadToCloudinaty(file,path)
-      image.push(url)
-      removeFile(file.tempFilePath)
-    }
-    res.json(image)
+       let url = await uploadToCloudinary(file,path)
+       image.push(url)
+       removeFile(file.tempFilePath)
+      }
+     return res.json(image)
+    
 
     
  } catch (error) {
@@ -29,7 +30,7 @@ exports.uploadImage = async (req,res)=>{
 
 
 // upload to cloudinary function
-const uploadToCloudinaty= async (file,path)=>{
+const uploadToCloudinary= async (file,path)=>{
   return new Promise((resolve)=>{
    cloudinary.v2.uploader.upload(
       file.tempFilePath,
@@ -53,4 +54,4 @@ const removeFile = (path)=>{
    fs.unlink(path, (err)=>{
      if(err) throw err
    })
- }
+}
