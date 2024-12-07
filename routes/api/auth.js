@@ -9,6 +9,10 @@ const resetPassController = require("../../controllers/resetPassController")
 const resetCodeSendController = require("../../controllers/resetCodeSendController")
 const resetCodeVerify = require("../../controllers/resetCodeVerify")
 const changePasswordController = require("../../controllers/changePasswordController")
+const getUserController = require("../../controllers/getUserController")
+const updateProfilePicture = require("../../controllers/updateProfilePicture")
+const updateCoverPicture = require("../../controllers/updateCoverPicture")
+const updateDetails = require("../../controllers/updateDetails")
 
 
 router.post("/", userController )
@@ -19,6 +23,10 @@ router.post("/resetPassword", resetPassController )
 router.post("/resetCode", resetCodeSendController )
 router.post("/resetCodeVerify", resetCodeVerify )
 router.post("/changePassword", changePasswordController )
+router.get("/getUser/:userName",authecticationUser, getUserController )
+router.put("/updateProfilePicture",authecticationUser, updateProfilePicture )
+router.put("/updateCoverPicture",authecticationUser, updateCoverPicture )
+router.put("/updateDetails",authecticationUser, updateDetails )
 
 
 module.exports = router

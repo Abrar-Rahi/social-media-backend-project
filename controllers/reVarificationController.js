@@ -13,7 +13,8 @@ const reVarificationController = async (req,res) => {
             message : "This Account is Alredy Activated"
         })
     }
-    const tokenEmailVarification = jwToken({id : user._id.toString()} , "30m" )
+    const tokenEmailVarification = jwToken({id : user._id.toString()} , "7d" )
+    
     const url = `${process.env.BASE_URL}/varification/${tokenEmailVarification}`
     
     sendVarifiedEmail(user.email, user.fName, url)

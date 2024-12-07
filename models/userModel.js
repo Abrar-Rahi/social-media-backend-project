@@ -119,7 +119,7 @@ const UserModel = new Schema(
         currentCity : {
             type : String
         },
-        workPalce : {
+        workPlace : {
             type : String
         },
         collage : {
