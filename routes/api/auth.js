@@ -13,6 +13,13 @@ const getUserController = require("../../controllers/getUserController")
 const updateProfilePicture = require("../../controllers/updateProfilePicture")
 const updateCoverPicture = require("../../controllers/updateCoverPicture")
 const updateDetails = require("../../controllers/updateDetails")
+const addFriendsController = require("../../controllers/addFriendsController")
+const cancleFriendReqController = require("../../controllers/cancleFriendReqController")
+const acceptFriendReqController = require("../../controllers/acceptFriendReqController")
+const deleteFriendReqController = require("../../controllers/deleteFriendReqController")
+const followController = require("../../controllers/followController")
+const unFollowController = require("../../controllers/unFollowController")
+const unFriendController = require("../../controllers/unFriendController")
 
 
 router.post("/", userController )
@@ -27,6 +34,13 @@ router.get("/getUser/:userName",authecticationUser, getUserController )
 router.put("/updateProfilePicture",authecticationUser, updateProfilePicture )
 router.put("/updateCoverPicture",authecticationUser, updateCoverPicture )
 router.put("/updateDetails",authecticationUser, updateDetails )
+router.put("/addFriends/:id",authecticationUser, addFriendsController )
+router.put("/cancelFriendReq/:id",authecticationUser, cancleFriendReqController )
+router.put("/acceptFriendReq/:id",authecticationUser, acceptFriendReqController )
+router.put("/unFriend/:id",authecticationUser, unFriendController )
+router.put("/deleteFriendReq/:id",authecticationUser, deleteFriendReqController )
+router.put("/follow/:id",authecticationUser, followController )
+router.put("/unFollow/:id",authecticationUser, unFollowController )
 
 
 module.exports = router
