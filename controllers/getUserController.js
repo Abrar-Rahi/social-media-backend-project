@@ -36,11 +36,13 @@ const getUserController = async (req, res) => {
         }
 
 
-        const wonPost = await PostModel.find({user : getUserProfile._id}).populate('user').sort({createdAt:-1})
+        const wonPost = await PostModel.find({user : getUserProfile._id}).populate('user').populate("comments.commentedBy", "profilePicture userName fName lName").sort({createdAt:-1})
 
+        
         await getUserProfile.populate("friends", "fName lName userName profilePicture")
-
+        
         res.json({...getUserProfile.toObject(), wonPost, friendShip})
+        
 
     } catch (err) {
         return res.status(400).json({

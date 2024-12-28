@@ -3,9 +3,11 @@ const router = express.Router()
 const authRoute = require("./auth.js")
 const postRoute = require("./post.js")
 const uploadRoute = require("./upload.js")
+const reactRoute = require("./react.js")
 
 router.use("/auth", authRoute)
 router.use("/post", postRoute)
 router.use("/upload", uploadRoute)
+router.use("/react", reactRoute)
 
 module.exports = router
