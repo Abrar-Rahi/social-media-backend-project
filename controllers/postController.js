@@ -99,3 +99,16 @@ exports.savePost = async (req, res) => {
       })
    }
 }
+
+
+exports.removePost = async (req, res) => {
+   try {
+     await PostModel.findByIdAndDelete(req.params.id)
+     res.send({status: "post deleted"})
+
+   } catch (error) {
+      res.status(401).json({
+         message: error.message
+      })
+   }
+}

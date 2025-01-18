@@ -20,6 +20,11 @@ const deleteFriendReqController = require("../../controllers/deleteFriendReqCont
 const followController = require("../../controllers/followController")
 const unFollowController = require("../../controllers/unFollowController")
 const unFriendController = require("../../controllers/unFriendController")
+const searchController = require("../../controllers/searchController")
+const searchHistoryController = require("../../controllers/searchHistoryController")
+const getSearchHistoryController = require("../../controllers/getSearchHistoryController")
+const removeSearchHistoryController = require("../../controllers/removeSearchHistoryController")
+const getAllFriendsController = require("../../controllers/getAllFriendsController")
 
 
 router.post("/", userController )
@@ -41,6 +46,11 @@ router.put("/unFriend/:id",authecticationUser, unFriendController )
 router.put("/deleteFriendReq/:id",authecticationUser, deleteFriendReqController )
 router.put("/follow/:id",authecticationUser, followController )
 router.put("/unFollow/:id",authecticationUser, unFollowController )
+router.post("/search/:searchTerm",authecticationUser, searchController )
+router.put("/addSearchHistory",authecticationUser, searchHistoryController )
+router.get("/getSearchHistory",authecticationUser, getSearchHistoryController )
+router.put("/removeSearchHistory",authecticationUser, removeSearchHistoryController )
+router.get("/getAllFriends",authecticationUser, getAllFriendsController )
 
 
 module.exports = router
