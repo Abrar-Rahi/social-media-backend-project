@@ -34,7 +34,8 @@ exports.allPost = async (req, res) => {
 
       const followingPosts = await Promise.all(promises).then((results) => results.flat())
       const userPosts = await PostModel.find({ user: req.user.id })
-         .populate("user", "profilePicture coverPicture fName lName userName gender");
+         .populate("user", "profilePicture coverPicture fName lName userName gender").populate("comments.commentedBy", "profilePicture userName fName lName")
+         .sort({ createdAt: -1 });
 
       followingPosts.push(...[...userPosts]);
 

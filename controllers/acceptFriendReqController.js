@@ -23,7 +23,7 @@ const acceptFriendReqController = async (req, res) => {
                     $pull: { request: sender._id }
                 });
         
-                res.json({ message: "accept friend request" });
+                res.json({ message: "accepted" });
             } else {
                 return res.json({ message: "Already friends" });
             }
